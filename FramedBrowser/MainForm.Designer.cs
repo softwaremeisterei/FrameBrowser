@@ -43,7 +43,7 @@
             webView21.DefaultBackgroundColor = Color.White;
             webView21.Location = new Point(3, 30);
             webView21.Name = "webView21";
-            webView21.Size = new Size(705, 297);
+            webView21.Size = new Size(704, 297);
             webView21.TabIndex = 1;
             webView21.ZoomFactor = 1D;
             // 
@@ -61,7 +61,7 @@
             urlTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             urlTextBox.Location = new Point(3, 4);
             urlTextBox.Name = "urlTextBox";
-            urlTextBox.Size = new Size(705, 23);
+            urlTextBox.Size = new Size(704, 23);
             urlTextBox.TabIndex = 2;
             urlTextBox.KeyDown += urlTextBox_KeyDown;
             // 

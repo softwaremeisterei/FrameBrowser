@@ -17,6 +17,8 @@ namespace FramedBrowser
         private int mWidth = 4;
         private bool mOutlineDrawn = false;
 
+        private Brush brush = Brushes.LightBlue;
+
         public event EventHandler<Rectangle> OnResize;
 
         private enum EdgeEnum
@@ -55,23 +57,23 @@ namespace FramedBrowser
             Graphics g = c.CreateGraphics();
             switch (mEdge) {
                 case EdgeEnum.TopLeft:
-                    g.FillRectangle(Brushes.Fuchsia, 0, 0, mWidth * 4, mWidth * 4);
+                    g.FillRectangle(brush, 0, 0, mWidth * 4, mWidth * 4);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.Left:
-                    g.FillRectangle(Brushes.Fuchsia, 0, 0, mWidth, c.Height);
+                    g.FillRectangle(brush, 0, 0, mWidth, c.Height);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.Right:
-                    g.FillRectangle(Brushes.Fuchsia, c.Width - mWidth, 0, c.Width, c.Height);
+                    g.FillRectangle(brush, c.Width - mWidth, 0, c.Width, c.Height);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.Top:
-                    g.FillRectangle(Brushes.Fuchsia, 0, 0, c.Width, mWidth);
+                    g.FillRectangle(brush, 0, 0, c.Width, mWidth);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.Bottom:
-                    g.FillRectangle(Brushes.Fuchsia, 0, c.Height - mWidth, c.Width, mWidth);
+                    g.FillRectangle(brush, 0, c.Height - mWidth, c.Width, mWidth);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.None:
