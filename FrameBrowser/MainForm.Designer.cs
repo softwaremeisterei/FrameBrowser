@@ -72,11 +72,11 @@
             closeButton.AutoSize = true;
             closeButton.BackColor = Color.Transparent;
             closeButton.Cursor = Cursors.Hand;
-            closeButton.Font = new Font("Segoe UI", 5F);
+            closeButton.Font = new Font("Segoe UI", 6F);
             closeButton.ForeColor = SystemColors.ControlDark;
             closeButton.Location = new Point(786, 1);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(15, 10);
+            closeButton.Size = new Size(16, 11);
             closeButton.TabIndex = 4;
             closeButton.Text = "❌";
             closeButton.Click += closeButton_Click;
