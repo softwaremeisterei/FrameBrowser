@@ -2,11 +2,12 @@
 {
     public partial class ResizeablePanel : Panel
     {
+        private Brush mBrush = Brushes.LightBlue;
         private int mWidth = 4;
         private bool mMouseDown = false;
         private bool mOutlineDrawn = false;
         private EdgeEnum mEdge = EdgeEnum.None;
-        private Brush brush = Brushes.LightBlue;
+        private Stack<Rectangle> mBoundsStack = new Stack<Rectangle>();
 
         public event EventHandler<Rectangle> OnResize;
 
@@ -44,27 +45,27 @@
             Graphics g = c.CreateGraphics();
             switch (mEdge) {
                 case EdgeEnum.TopLeft:
-                    g.FillRectangle(brush, 0, 0, mWidth * 4, mWidth * 4);
+                    g.FillRectangle(mBrush, 0, 0, mWidth * 4, mWidth * 4);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.Left:
-                    g.FillRectangle(brush, 0, 0, mWidth, c.Height);
+                    g.FillRectangle(mBrush, 0, 0, mWidth, c.Height);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.Right:
-                    g.FillRectangle(brush, c.Width - mWidth, 0, c.Width, c.Height);
+                    g.FillRectangle(mBrush, c.Width - mWidth, 0, c.Width, c.Height);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.Top:
-                    g.FillRectangle(brush, 0, 0, c.Width, mWidth);
+                    g.FillRectangle(mBrush, 0, 0, c.Width, mWidth);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.Bottom:
-                    g.FillRectangle(brush, 0, c.Height - mWidth, c.Width, mWidth);
+                    g.FillRectangle(mBrush, 0, c.Height - mWidth, c.Width, mWidth);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.BottomRight:
-                    g.FillRectangle(brush, c.Width - mWidth, c.Height - mWidth, mWidth * 4, mWidth * 4);
+                    g.FillRectangle(mBrush, c.Width - mWidth, c.Height - mWidth, mWidth * 4, mWidth * 4);
                     mOutlineDrawn = true;
                     break;
                 case EdgeEnum.None:
@@ -144,7 +145,18 @@
             Control c = (Control)sender;
             mEdge = EdgeEnum.None;
             c.Refresh();
+        }
 
+        public void PushBounds()
+        {
+            mBoundsStack.Push(Bounds);
+        }
+
+        public void PopBounds()
+        {
+            if (mBoundsStack.Count > 0) {
+                Bounds = mBoundsStack.Pop();
+            }
         }
     }
 }

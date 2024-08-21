@@ -6,6 +6,8 @@ namespace FrameBrowser
 {
     public partial class MainForm : Form
     {
+        bool isFullscreen = false;
+
         public MainForm()
         {
             InitializeComponent();
@@ -78,5 +80,20 @@ namespace FrameBrowser
             }
         }
 
+        Rectangle? restoreBounds = null;
+
+        private void fullscreenButton_Click(object sender, EventArgs e)
+        {
+            isFullscreen = !isFullscreen;
+            if (isFullscreen) {
+                resizeablePanel1.PushBounds();
+                Rectangle screenBounds = Screen.GetBounds(new Point(Top, Left));
+                screenBounds.Inflate(0, -15);
+                resizeablePanel1.Bounds = screenBounds;
+            }
+            else {
+                resizeablePanel1.PopBounds();
+            }
+        }
     }
 }

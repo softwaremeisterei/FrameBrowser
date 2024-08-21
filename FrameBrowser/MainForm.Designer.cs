@@ -31,6 +31,7 @@
             resizeablePanel1 = new ResizeablePanel();
             urlTextBox = new TextBox();
             closeButton = new Label();
+            fullscreenButton = new Label();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             resizeablePanel1.SuspendLayout();
             SuspendLayout();
@@ -73,12 +74,27 @@
             closeButton.Cursor = Cursors.Hand;
             closeButton.Font = new Font("Segoe UI", 5F);
             closeButton.ForeColor = SystemColors.ControlDark;
-            closeButton.Location = new Point(781, 5);
+            closeButton.Location = new Point(786, 1);
             closeButton.Name = "closeButton";
             closeButton.Size = new Size(15, 10);
             closeButton.TabIndex = 4;
             closeButton.Text = "❌";
             closeButton.Click += closeButton_Click;
+            // 
+            // fullscreenButton
+            // 
+            fullscreenButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            fullscreenButton.AutoSize = true;
+            fullscreenButton.BackColor = Color.Transparent;
+            fullscreenButton.Cursor = Cursors.Hand;
+            fullscreenButton.Font = new Font("Segoe UI", 8F);
+            fullscreenButton.ForeColor = SystemColors.ControlDark;
+            fullscreenButton.Location = new Point(769, -1);
+            fullscreenButton.Name = "fullscreenButton";
+            fullscreenButton.Size = new Size(18, 13);
+            fullscreenButton.TabIndex = 5;
+            fullscreenButton.Text = "🗖";
+            fullscreenButton.Click += fullscreenButton_Click;
             // 
             // MainForm
             // 
@@ -86,6 +102,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.bg_line_slanting_dark_1920x1080;
             ClientSize = new Size(800, 450);
+            Controls.Add(fullscreenButton);
             Controls.Add(closeButton);
             Controls.Add(resizeablePanel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -105,5 +122,6 @@
         private ResizeablePanel resizeablePanel1;
         private TextBox urlTextBox;
         private Label closeButton;
+        private Label fullscreenButton;
     }
 }
