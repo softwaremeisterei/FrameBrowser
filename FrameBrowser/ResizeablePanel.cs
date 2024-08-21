@@ -17,7 +17,8 @@
             Left,
             Top,
             Bottom,
-            TopLeft
+            TopLeft,
+            BottomRight
         }
 
         public ResizeablePanel()
@@ -62,6 +63,10 @@
                     g.FillRectangle(brush, 0, c.Height - mWidth, c.Width, mWidth);
                     mOutlineDrawn = true;
                     break;
+                case EdgeEnum.BottomRight:
+                    g.FillRectangle(brush, c.Width - mWidth, c.Height - mWidth, mWidth * 4, mWidth * 4);
+                    mOutlineDrawn = true;
+                    break;
                 case EdgeEnum.None:
                     if (mOutlineDrawn) {
                         c.Refresh();
@@ -88,15 +93,23 @@
                     case EdgeEnum.Bottom:
                         c.SetBounds(c.Left, c.Top, c.Width, c.Height - (c.Height - e.Y));
                         break;
+                    case EdgeEnum.BottomRight:
+                        c.SetBounds(c.Left, c.Top, c.Width - (c.Width - e.X), c.Height - (c.Height - e.Y));
+                        break;
                 }
                 OnResize?.Invoke(this, Bounds);
                 c.ResumeLayout();
             }
             else {
-                if (e.X <= (mWidth * 4) && e.Y <= (mWidth * 4)) {
+                if (e.X <= mWidth * 4 && e.Y <= mWidth * 4) {
                     //top left corner
                     c.Cursor = Cursors.SizeAll;
                     mEdge = EdgeEnum.TopLeft;
+                }
+                else if (e.X >= c.Width - mWidth * 4 && e.Y >= c.Height - mWidth * 4) {
+                    //bottom right corner
+                    c.Cursor = Cursors.SizeNWSE;
+                    mEdge = EdgeEnum.BottomRight;
                 }
                 else if (e.X <= mWidth) {
                     //left edge
@@ -124,7 +137,6 @@
                     mEdge = EdgeEnum.None;
                 }
             }
-
         }
 
         private void ResizeablePanel_MouseLeave(object sender, EventArgs e)
