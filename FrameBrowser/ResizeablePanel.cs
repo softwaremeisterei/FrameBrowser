@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace FramedBrowser
+﻿namespace FrameBrowser
 {
     public partial class ResizeablePanel : Panel
     {
-        private bool mMouseDown = false;
-        private EdgeEnum mEdge = EdgeEnum.None;
         private int mWidth = 4;
+        private bool mMouseDown = false;
         private bool mOutlineDrawn = false;
-
+        private EdgeEnum mEdge = EdgeEnum.None;
         private Brush brush = Brushes.LightBlue;
 
         public event EventHandler<Rectangle> OnResize;
@@ -31,7 +20,6 @@ namespace FramedBrowser
             TopLeft
         }
 
-
         public ResizeablePanel()
         {
             InitializeComponent();
@@ -39,16 +27,14 @@ namespace FramedBrowser
 
         private void ResizeablePanel_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left) {
+            if (e.Button == MouseButtons.Left) {
                 mMouseDown = true;
-
             }
         }
 
         private void ResizeablePanel_MouseUp(object sender, MouseEventArgs e)
         {
             mMouseDown = false;
-
         }
 
         private void ResizeablePanel_MouseMove(object sender, MouseEventArgs e)

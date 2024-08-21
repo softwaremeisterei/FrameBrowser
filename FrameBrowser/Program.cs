@@ -1,4 +1,4 @@
-namespace FramedBrowser
+namespace FrameBrowser
 {
     internal static class Program
     {

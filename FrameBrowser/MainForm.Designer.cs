@@ -1,4 +1,4 @@
-﻿namespace FramedBrowser
+﻿namespace FrameBrowser
 {
     partial class MainForm
     {
@@ -30,7 +30,7 @@
             webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             resizeablePanel1 = new ResizeablePanel();
             urlTextBox = new TextBox();
-            closeButton = new Button();
+            closeButton = new Label();
             ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             resizeablePanel1.SuspendLayout();
             SuspendLayout();
@@ -68,16 +68,16 @@
             // closeButton
             // 
             closeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            closeButton.AutoSize = true;
             closeButton.BackColor = Color.Transparent;
-            closeButton.FlatStyle = FlatStyle.Popup;
-            closeButton.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            closeButton.ForeColor = Color.FromArgb(224, 224, 224);
-            closeButton.Location = new Point(778, 2);
+            closeButton.Cursor = Cursors.Hand;
+            closeButton.Font = new Font("Segoe UI", 5F);
+            closeButton.ForeColor = SystemColors.ControlDark;
+            closeButton.Location = new Point(781, 5);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(20, 20);
-            closeButton.TabIndex = 3;
+            closeButton.Size = new Size(15, 10);
+            closeButton.TabIndex = 4;
             closeButton.Text = "❌";
-            closeButton.UseVisualStyleBackColor = false;
             closeButton.Click += closeButton_Click;
             // 
             // MainForm
@@ -90,19 +90,20 @@
             Controls.Add(resizeablePanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm";
-            Text = "Framed Browser 1.0";
+            Text = "Frame Browser 1.0";
             WindowState = FormWindowState.Maximized;
             Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             resizeablePanel1.ResumeLayout(false);
             resizeablePanel1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
         private ResizeablePanel resizeablePanel1;
         private TextBox urlTextBox;
-        private Button closeButton;
+        private Label closeButton;
     }
 }
