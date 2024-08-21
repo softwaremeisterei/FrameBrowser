@@ -51,7 +51,7 @@
             // 
             resizeablePanel1.Controls.Add(urlTextBox);
             resizeablePanel1.Controls.Add(webView21);
-            resizeablePanel1.Location = new Point(45, 76);
+            resizeablePanel1.Location = new Point(45, 60);
             resizeablePanel1.Name = "resizeablePanel1";
             resizeablePanel1.Size = new Size(711, 330);
             resizeablePanel1.TabIndex = 2;
@@ -70,10 +70,11 @@
             closeButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             closeButton.BackColor = Color.Transparent;
             closeButton.FlatStyle = FlatStyle.Popup;
-            closeButton.ForeColor = SystemColors.AppWorkspace;
-            closeButton.Location = new Point(774, 3);
+            closeButton.Font = new Font("Segoe UI", 5.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            closeButton.ForeColor = Color.FromArgb(224, 224, 224);
+            closeButton.Location = new Point(778, 2);
             closeButton.Name = "closeButton";
-            closeButton.Size = new Size(24, 24);
+            closeButton.Size = new Size(20, 20);
             closeButton.TabIndex = 3;
             closeButton.Text = "❌";
             closeButton.UseVisualStyleBackColor = false;
